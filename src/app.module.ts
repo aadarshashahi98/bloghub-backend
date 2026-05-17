@@ -7,6 +7,8 @@ import { BlogModule } from './blog/blog.module';
 import { ThemeModule } from './theme/theme.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import * as fs from 'fs';
+import * as path from 'path';
 
 dotenv.config();
 
@@ -18,13 +20,13 @@ dotenv.config();
       port: parseInt(process.env.DB_PORT || '18094', 10),
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      database: process.env.DB_DATABASE,
       charset: 'utf8mb4',
       entities: [],
       synchronize: false,
       autoLoadEntities: true,
       ssl: {
-        rejectUnauthorized: false,
+        ca: fs.readFileSync(path.join(__dirname, 'config/aiven-ca.pem')),
       },
     }),
     ThemeModule,
