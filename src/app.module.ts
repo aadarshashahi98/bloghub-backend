@@ -9,6 +9,14 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import * as fs from 'fs';
 import * as path from 'path';
+import { AuthController } from './auth/auth.controller';
+import { BlogController } from './blog/blog.controller';
+import { ThemeController } from './theme/theme.controller';
+import { UserController } from './user/user.controller';
+import { AuthService } from './auth/auth.service';
+import { BlogService } from './blog/blog.service';
+import { ThemeService } from './theme/theme.service';
+import { UserService } from './user/user.service';
 
 dotenv.config();
 
@@ -22,7 +30,8 @@ dotenv.config();
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       charset: 'utf8mb4',
-      synchronize: true,
+      entities: [],
+      synchronize: false,
       autoLoadEntities: true,
     }),
     ThemeModule,
@@ -30,7 +39,7 @@ dotenv.config();
     AuthModule,
     UserModule, // <-- provides UserService & UserController
   ],
-  controllers: [AppController], // <-- remove UserController here
-  providers: [AppService],      // <-- remove UserService here
+  controllers: [AppController, AuthController, BlogController, ThemeController, UserController], // <-- remove UserController here
+  providers: [AppService, AuthService, BlogService, ThemeService, UserService],      // <-- remove UserService here
 })
 export class AppModule {}
