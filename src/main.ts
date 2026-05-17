@@ -5,10 +5,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: "https://bloghub-silk.vercel.app", // your Next.js port
+    origin: [
+      "http://localhost:3000",
+      "https://bloghub-silk.vercel.app"
+    ],
     credentials: true,
   });
 
-  await app.listen(4000);
+  await app.listen(process.env.PORT || 4000);
 }
+
 bootstrap();
