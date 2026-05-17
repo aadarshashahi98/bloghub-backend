@@ -22,7 +22,6 @@ dotenv.config();
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       charset: 'utf8mb4',
-      entities: [],
       synchronize: true,
       autoLoadEntities: true,
     }),
