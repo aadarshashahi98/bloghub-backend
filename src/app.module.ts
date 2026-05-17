@@ -39,7 +39,7 @@ dotenv.config();
     AuthModule,
     UserModule, // <-- provides UserService & UserController
   ],
-  controllers: [AppController, AuthController, BlogController, ThemeController, UserController], // <-- remove UserController here
-  providers: [AppService, AuthService, BlogService, ThemeService, UserService],      // <-- remove UserService here
+  controllers: [AppController], // <-- remove UserController here
+  providers: [AppService],      // <-- remove UserService here
 })
 export class AppModule {}
