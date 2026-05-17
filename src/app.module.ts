@@ -23,7 +23,7 @@ dotenv.config();
       database: process.env.DB_DATABASE,
       charset: 'utf8mb4',
       entities: [],
-      synchronize: true,
+      synchronize: false,
       autoLoadEntities: true,
     }),
     ThemeModule,
